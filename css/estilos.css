@@ -1,0 +1,480 @@
+/* ==========================================================
+   SN STUDIO - Hoja de estilos única para todas las páginas
+   ========================================================== */
+
+/* ---------- 1. COLORES Y FUENTES (cambia aquí y cambia en toda la web) ---------- */
+:root {
+  --dorado: #e0b52f;        /* títulos destacados, botones, líneas */
+  --negro: #000000;         /* fondo principal */
+  --gris-oscuro: #1c1c1c;   /* tarjetas y secciones */
+  --gris-footer: #111111;   /* fondo del footer */
+  --gris-campo: #3a3a3a;    /* campos del formulario */
+  --blanco: #ffffff;        /* texto principal */
+  --rojo: #b32424;          /* borde de las tarjetas de servicios */
+
+  --fuente-titulos: "Playfair Display", serif;
+  --fuente-texto: "Inter", sans-serif;
+}
+
+/* ---------- 2. ESTILOS GENERALES ---------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }  /* desplazamiento suave al usar el menú */
+
+body {
+  background: var(--negro);
+  color: var(--blanco);
+  font-family: var(--fuente-texto);
+  line-height: 1.5;
+}
+
+h1, h2, h3 {
+  font-family: var(--fuente-titulos);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+h1 { font-size: 3rem; }
+/* Títulos grandes de cada sección (h2 con tamaño de título) */
+.titulo-centrado, .portafolio-texto h2, .historia h2, .contacto-info h2 { font-size: 3rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.2rem; }
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+ul { list-style: none; }
+
+.dorado { color: var(--dorado); }
+
+/* Contenedor que centra el contenido */
+.contenedor {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Botón dorado (se usa en varias páginas) */
+.boton {
+  display: inline-block;
+  background: var(--dorado);
+  color: var(--negro);
+  border: none;
+  padding: 12px 24px;
+  font-family: var(--fuente-texto);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.boton:hover { opacity: 0.85; }
+
+/* ---------- 3. MENÚ DE NAVEGACIÓN ---------- */
+header {
+  background: var(--negro);
+  position: sticky;   /* el menú se queda fijo arriba al bajar */
+  top: 0;
+  z-index: 10;
+}
+
+/* Evita que el menú fijo tape el título de cada sección */
+#inicio, #portafolio, #servicios, #sobre-nosotros, #contacto, h2[id] { scroll-margin-top: 100px; }
+
+header .contenedor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.logo img { height: 70px; }
+
+nav ul {
+  display: flex;
+  gap: 40px;
+}
+
+nav a {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  padding-bottom: 3px;
+}
+
+/* Enlace de la página actual (subrayado dorado) */
+nav a:hover {
+  color: var(--dorado);
+  border-bottom: 1px solid var(--dorado);
+}
+
+/* Botón de las 3 rayitas (solo se ve en celular) */
+.boton-menu {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--blanco);
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+
+/* ---------- 4. PÁGINA INICIO ---------- */
+.hero {
+  background: #260d0d;
+  min-height: 610px;
+  display: flex;
+  align-items: center;
+}
+
+.hero .contenedor {
+  width: 100%;
+  max-width: 1400px;
+  min-height: 610px;
+  margin: 0 auto;
+  padding: 0 40px 0 7%;
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  align-items: center;
+  gap: 35px;
+}
+
+.hero .contenedor > div {
+  position: relative;
+  z-index: 1;
+}
+
+.etiquetas {
+  font-size: 1rem;
+  margin-bottom: 48px;
+  letter-spacing: 1px;
+  color: #f5e9e5;
+  text-transform: uppercase;
+}
+
+.etiquetas .dorado {
+  color: var(--dorado);
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 4vw, 4.3rem);
+  line-height: 1.2;
+  margin-bottom: 25px;
+  max-width: 650px;
+  color: #f8e8e8;
+}
+
+.hero h1 .dorado {
+  color: #e0b52f;
+}
+
+.hero p:not(.etiquetas) {
+  font-size: 1.15rem;
+  line-height: 1.55;
+  margin-bottom: 30px;
+  max-width: 550px;
+  color: #eadbda;
+}
+
+.hero .boton {
+  padding: 13px 20px;
+  background: #e0a323;
+  color: #1a0808;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  transition: background 0.3s ease;
+}
+
+.hero .boton:hover {
+  background: #f0c44e;
+  opacity: 1;
+}
+
+.hero img {
+  width: 100%;
+  height: 540px;
+  object-fit: cover;
+  object-position: center 35%;
+  display: block;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 800px) {
+  .hero {
+    min-height: auto;
+  }
+
+  .hero .contenedor {
+    min-height: auto;
+    padding: 45px 25px;
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .etiquetas {
+    margin-bottom: 25px;
+  }
+
+  .hero h1 {
+    font-size: 2.7rem;
+  }
+
+  .hero p:not(.etiquetas) {
+    font-size: 1rem;
+  }
+
+  .hero img {
+    height: 380px;
+    object-position: center 30%;
+  }
+}
+
+@media (max-width: 500px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero img {
+    height: 300px;
+  }
+}
+
+
+/* ---------- 5. PÁGINA PORTAFOLIO ---------- */
+.portafolio {
+  background: #222222;
+}
+
+.portafolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  align-items: center;
+}
+
+.portafolio-texto {
+  grid-column: span 2;
+}
+
+.portafolio-texto h2 { margin: 10px 0 20px 0; text-transform: uppercase; }
+
+.subtitulo {
+  color: var(--dorado);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+/* Tarjeta de categoría (foto + nombre) */
+.categoria {
+  text-align: center;
+  color: var(--dorado);
+  font-size: 1.2rem;
+}
+
+.categoria img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border: 1px solid var(--dorado);
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+
+.categoria:hover img { opacity: 0.8; }
+
+/* Galería completa */
+.galeria h2 {
+  color: var(--dorado);
+  margin: 40px 0 15px 0;
+  border-bottom: 1px solid var(--dorado);
+  padding-bottom: 5px;
+}
+
+.fotos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.fotos img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* ---------- 6. PÁGINA SERVICIOS ---------- */
+.titulo-centrado {
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+
+.servicios-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.servicio {
+  background: var(--gris-oscuro);
+  border: 1px solid var(--rojo);
+  border-radius: 5px 25px 45px 5px;
+  padding: 20px;
+}
+
+.servicio h3 {
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+/* ---------- 7. PÁGINA SOBRE NOSOTROS ---------- */
+.historia {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.historia h2 { text-transform: uppercase; }
+
+.historia p {
+  border-left: 1px solid var(--dorado);
+  padding-left: 20px;
+  font-size: 0.9rem;
+}
+
+.caja-valores {
+  background: var(--gris-footer);
+  border-radius: 30px;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.caja-valores i {
+  font-size: 1.5rem;
+  color: var(--dorado);
+  margin-bottom: 8px;
+}
+
+.caja-valores h3 { margin-bottom: 8px; }
+.caja-valores p, .caja-valores li { font-size: 0.85rem; }
+
+.centrado { text-align: center; margin-top: 40px; }
+
+/* Botón con borde dorado */
+.boton-borde {
+  display: inline-block;
+  border: 1px solid var(--dorado);
+  background: #2a2a2a;
+  color: var(--dorado);
+  padding: 12px 24px;
+  font-size: 0.9rem;
+}
+.boton-borde:hover { background: var(--dorado); color: var(--negro); }
+
+/* ---------- 8. PÁGINA CONTACTO ---------- */
+.contacto-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+
+.contacto-info p { margin: 20px 0 30px 0; }
+
+.datos li { margin-bottom: 15px; font-size: 0.85rem; }
+.datos i { font-size: 1.3rem; margin-right: 8px; vertical-align: middle; }
+.datos span { color: var(--dorado); }
+
+form label {
+  display: block;
+  font-size: 0.9rem;
+  margin-top: 12px;
+}
+
+form input,
+form select,
+form textarea {
+  width: 100%;
+  max-width: 400px;
+  background: var(--gris-campo);
+  color: var(--blanco);
+  border: 1px solid var(--dorado);
+  padding: 8px;
+  font-family: var(--fuente-texto);
+}
+
+form textarea { height: 100px; background: var(--gris-oscuro); }
+form .boton { display: block; width: 100%; max-width: 400px; margin-top: 15px; }
+
+#mensaje-enviado {
+  color: var(--dorado);
+  margin-top: 15px;
+}
+
+/* ---------- 9. FOOTER (pie de página) ---------- */
+footer { background: var(--gris-footer); }
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  align-items: center;
+}
+
+.footer-grid img { height: 80px; margin-bottom: 8px; border-radius: 12px; }
+.footer-grid h4 { color: var(--dorado); font-weight: 400; margin-bottom: 8px; }
+.footer-grid li { font-size: 0.85rem; }
+.footer-grid li a:hover { color: var(--dorado); }
+
+.redes { display: flex; gap: 15px; font-size: 1.6rem; }
+.redes a:hover { color: var(--dorado); }
+
+.footer-frase {
+  font-family: var(--fuente-titulos);
+  font-size: 1.4rem;
+}
+
+.derechos {
+  border-top: 1px solid var(--dorado);
+  display: flex;
+  justify-content: space-around;
+  padding: 8px;
+  font-size: 0.8rem;
+}
+
+/* ---------- 10. RESPONSIVE (tablet y celular) ---------- */
+@media (max-width: 800px) {
+  h1 { font-size: 2.2rem; }
+  .titulo-centrado, .portafolio-texto h2, .historia h2, .contacto-info h2 { font-size: 2.2rem; }
+
+  /* Menú: se oculta y aparece con el botón de rayitas */
+  .boton-menu { display: block; }
+  header .contenedor { flex-wrap: wrap; }
+  nav { width: 100%; display: none; }
+  nav.abierto { display: block; }
+  nav ul { flex-direction: column; gap: 15px; padding: 15px 0; }
+
+  /* Todo en una sola columna */
+  .hero .contenedor,
+  .servicios-grid,
+  .contacto-grid,
+  .caja-valores,
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero img { height: 300px; }
+  .portafolio-grid { grid-template-columns: 1fr 1fr; }
+  .portafolio-texto { grid-column: span 2; }
+  .historia { flex-direction: column; align-items: flex-start; }
+  .derechos { flex-direction: column; text-align: center; }
+}
+
+@media (max-width: 500px) {
+  .portafolio-grid { grid-template-columns: 1fr; }
+  .portafolio-texto { grid-column: span 1; }
+}
